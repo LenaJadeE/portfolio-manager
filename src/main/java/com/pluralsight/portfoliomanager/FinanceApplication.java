@@ -92,7 +92,12 @@ public class FinanceApplication {
     }
 
     private static void addJewelry(Scanner scanner, Portfolio portfolio) {
+        String name = promptForText(scanner, "Name: ");
+        BigDecimal marketValue = promptForMoney(scanner, "Market value: ");
+        double karat = promptForDouble(scanner, "Karat: ");
 
+        portfolio.add(new Jewelry(name, marketValue, karat));
+        System.out.println(name + " was added.");
     }
 
     private static void addBankAccount(Scanner scanner, Portfolio portfolio) {
@@ -108,7 +113,7 @@ public class FinanceApplication {
     }
 
     private static int promptForInt(Scanner scanner, String message) {
-       return Integer.parseInt(scanner.nextLine().trim());
+        return Integer.parseInt(scanner.nextLine().trim());
     }
 
     private static double promptForDouble(Scanner scanner, String message) {
