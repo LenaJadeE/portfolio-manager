@@ -79,7 +79,6 @@ public class FinanceApplication {
 
         portfolio.add(new House(name, marketValue, yearBuilt, squareFeet, bedrooms));
         System.out.println(name + " was added.");
-
     }
 
     private static void addGold(Scanner scanner, Portfolio portfolio) {
@@ -165,7 +164,14 @@ public class FinanceApplication {
     }
 
     private static double promptForDouble(Scanner scanner, String message) {
-        return Double.parseDouble(scanner.nextLine().trim());
+        while (true) {
+            System.out.print(message);
+            try {
+                return Double.parseDouble(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number.");
+            }
+        }
     }
 
     private static String promptForText(Scanner scanner, String message) {
