@@ -1,6 +1,4 @@
-package com.pluralsight.portfoliomanager;
-
-import com.pluralsight.portfoliomanager.model.Valuable;
+package com.pluralsight.portfoliomanager.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
