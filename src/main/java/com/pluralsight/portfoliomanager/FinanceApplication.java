@@ -154,7 +154,14 @@ public class FinanceApplication {
     }
 
     private static int promptForInt(Scanner scanner, String message) {
-        return Integer.parseInt(scanner.nextLine().trim());
+        while (true) {
+            System.out.print(message);
+            try {
+                return Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a whole number.");
+            }
+        }
     }
 
     private static double promptForDouble(Scanner scanner, String message) {
@@ -162,6 +169,7 @@ public class FinanceApplication {
     }
 
     private static String promptForText(Scanner scanner, String message) {
+        System.out.print(message);
         return scanner.nextLine().trim();
     }
 
