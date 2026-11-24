@@ -4,7 +4,7 @@ A Java console app from Workbook 6a. It uses a `Valuable` interface so that very
 
 ## Class Diagram
 
-![PortfolioManagerDiagram.png](PortfolioManagerDiagram.png)
+![ProjectDiagram.png](ProjectDiagram.png)![img.png](ProjectDiagram.png)
 
 ## How It Works
 
