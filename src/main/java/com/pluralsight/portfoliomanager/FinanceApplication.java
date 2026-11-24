@@ -119,7 +119,38 @@ public class FinanceApplication {
     }
 
     private static void displayPortfolio(Portfolio portfolio) {
+        System.out.println();
+        System.out.println(portfolio.getName() + " (owner: " + portfolio.getOwner() + ")");
 
+        for (Valuable asset : portfolio.getAssets()) {
+            System.out.println(describe(asset));
+        }
+
+        System.out.println("Net value: " + formatMoney(portfolio.getValue()));
+
+        Valuable mostValuable = portfolio.getMostValuable();
+        Valuable leastValuable = portfolio.getLeastValuable();
+
+        if (mostValuable != null) {
+            System.out.println("Most valuable: " + describe(mostValuable));
+            System.out.println("Least valuable: " + describe(leastValuable));
+        }
+    }
+
+    private static String describe(Valuable asset) {
+        String name = "Unknown";
+
+        if (asset instanceof FixedAsset fixedAsset) {
+            name = fixedAsset.getName();
+        } else if (asset instanceof Account account) {
+            name = account.getName();
+        }
+
+        return name + ": " + formatMoney(asset.getValue());
+    }
+
+    private static String formatMoney(BigDecimal amount) {
+        return String.format("$%.2f", amount);
     }
 
     private static int promptForInt(Scanner scanner, String message) {
