@@ -1,6 +1,14 @@
 package com.pluralsight.portfoliomanager;
 
-import com.pluralsight.portfoliomanager.model.*;
+import com.pluralsight.portfoliomanager.model.Account;
+import com.pluralsight.portfoliomanager.model.BankAccount;
+import com.pluralsight.portfoliomanager.model.CreditCard;
+import com.pluralsight.portfoliomanager.model.FixedAsset;
+import com.pluralsight.portfoliomanager.model.Gold;
+import com.pluralsight.portfoliomanager.model.House;
+import com.pluralsight.portfoliomanager.model.Jewelry;
+import com.pluralsight.portfoliomanager.model.Portfolio;
+import com.pluralsight.portfoliomanager.model.Valuable;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -63,6 +71,14 @@ public class FinanceApplication {
     }
 
     private static void addHouse(Scanner scanner, Portfolio portfolio) {
+        String name = promptForText(scanner, "Name: ");
+        BigDecimal marketValue = promptForMoney(scanner, "Market value: ");
+        int yearBuilt = promptForInt(scanner, "Year built: ");
+        int squareFeet = promptForInt(scanner, "Square feet: ");
+        int bedrooms = promptForInt(scanner, "Bedrooms: ");
+
+        portfolio.add(new House(name, marketValue, yearBuilt, squareFeet, bedrooms));
+        System.out.println(name + " was added.");
 
     }
 
@@ -85,4 +101,18 @@ public class FinanceApplication {
     private static void displayPortfolio(Portfolio portfolio) {
 
     }
+
+    private static int promptForInt(Scanner scanner, String message) {
+       return Integer.parseInt(scanner.nextLine().trim());
+    }
+
+    private static String promptForText(Scanner scanner, String message) {
+        return scanner.nextLine().trim();
+    }
+
+    private static BigDecimal promptForMoney(Scanner scanner, String message) {
+        return BigDecimal.valueOf(Double.parseDouble(scanner.nextLine().trim()));
+    }
+
+
 }
