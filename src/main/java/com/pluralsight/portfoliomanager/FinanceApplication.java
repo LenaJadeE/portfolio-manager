@@ -101,7 +101,12 @@ public class FinanceApplication {
     }
 
     private static void addBankAccount(Scanner scanner, Portfolio portfolio) {
+        int accountNumber = promptForInt(scanner, "Account number: ");
+        String name = promptForText(scanner, "Account name: ");
+        BigDecimal balance = promptForMoney(scanner, "Balance: ");
 
+        portfolio.add(new BankAccount(accountNumber, name, balance));
+        System.out.println(name + " was added.");
     }
 
     private static void addCreditCard(Scanner scanner, Portfolio portfolio) {
