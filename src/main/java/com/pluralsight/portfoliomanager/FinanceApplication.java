@@ -143,6 +143,8 @@ public class FinanceApplication {
             name = fixedAsset.getName();
         } else if (asset instanceof Account account) {
             name = account.getName();
+        } else if (asset instanceof Portfolio otherPortfolio) {
+            name = otherPortfolio.getName();
         }
 
         return name + ": " + formatMoney(asset.getValue());
@@ -180,8 +182,13 @@ public class FinanceApplication {
     }
 
     private static BigDecimal promptForMoney(Scanner scanner, String message) {
-        return BigDecimal.valueOf(Double.parseDouble(scanner.nextLine().trim()));
+        while (true) {
+            System.out.print(message);
+            try {
+                return new BigDecimal(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter an amount like 1500.00");
+            }
+        }
     }
-
-
 }
